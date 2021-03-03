@@ -20,4 +20,8 @@ RUN rm -r vendor composer.lock
 RUN composer update
 RUN composer install
 
+WORKDIR /work
+COPY srcs/wordpress-5.6.2.zip /work/
+RUN unzip wordpress-5.6.2.zip
+
 ENTRYPOINT /srcs/start.sh
