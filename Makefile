@@ -1,10 +1,10 @@
 .PHONY: build run run-autoindex sh stop
 
 run:
-	sudo docker run -e NOAUTOINDEX=on --name ft -ti -p 8001:8001 -p 443:443 -v $$PWD/srcs:/srcs --rm ft_server || true
+	sudo docker run -e NOAUTOINDEX=on --name ft -ti -p 443:443 -v $$PWD/srcs:/srcs --rm ft_server || true
 
 run-autoindex:
-	sudo docker run --name ft -ti -p 8001:8001 -p 443:443 -v $$PWD/srcs:/srcs --rm ft_server || true
+	sudo docker run --name ft -ti -p 443:443 -v $$PWD/srcs:/srcs --rm ft_server || true
 
 build:
 	sudo docker build -t ft_server .
