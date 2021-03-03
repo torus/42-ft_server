@@ -18,10 +18,10 @@ mkdir -p /var/www/html/folder/
 cp /srcs/secret.html /var/www/html/folder/
 cp /srcs/wp-config.php /work/wordpress/
 
-if [ x$AUTOINDEX = x ]; then
-	sed s/@AUTOINDEX@/off/ /srcs/nginx.conf > /work/nginx.conf;
-else
+if [ x$NOAUTOINDEX = x ]; then
 	sed s/@AUTOINDEX@/on/ /srcs/nginx.conf > /work/nginx.conf;
+else
+	sed s/@AUTOINDEX@/off/ /srcs/nginx.conf > /work/nginx.conf;
 fi
 
 nginx -c /work/nginx.conf &
