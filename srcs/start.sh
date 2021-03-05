@@ -13,15 +13,15 @@ function terminate_all() {
 trap 'terminate_all' 2
 
 echo '<?php phpinfo(); ?>' > /var/www/html/phpinfo.php
-cp /srcs/index.html /var/www/html/
+cp /work/index.html /var/www/html/
 mkdir -p /var/www/html/folder/
-cp /srcs/secret.html /var/www/html/folder/
-cp /srcs/wp-config.php /work/wordpress/
+cp /work/secret.html /var/www/html/folder/
+cp /work/wp-config.php /work/wordpress/
 
 if [ x$NOAUTOINDEX = x ]; then
-	sed s/@AUTOINDEX@/on/ /srcs/nginx.conf > /work/nginx.conf;
+	sed s/@AUTOINDEX@/on/ /work/nginx.conf.in > /work/nginx.conf;
 else
-	sed s/@AUTOINDEX@/off/ /srcs/nginx.conf > /work/nginx.conf;
+	sed s/@AUTOINDEX@/off/ /work/nginx.conf.in > /work/nginx.conf;
 fi
 
 nginx -c /work/nginx.conf &

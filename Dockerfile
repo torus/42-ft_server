@@ -21,7 +21,7 @@ RUN composer update
 RUN composer install
 
 WORKDIR /work
-COPY srcs/wordpress-5.6.2.zip /work/
+COPY srcs/* /work/
 RUN unzip wordpress-5.6.2.zip
 
-ENTRYPOINT /srcs/start.sh
+ENTRYPOINT /work/start.sh
